@@ -1,0 +1,10 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/trackingapp', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/trackingapp']
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['run', 'deploy', 'trackingapp', '--image', 'gcr.io/$PROJECT_ID/trackingapp', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
+images:
+  - 'gcr.io/$PROJECT_ID/trackingapp'
+  gcloud builds submit --config cloudbuild.yaml .
