@@ -1,0 +1,16 @@
+server:
+  port:   # or any port you prefer
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/trackingdb
+    username: postgres
+    password:   # leave blank if there's no password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
